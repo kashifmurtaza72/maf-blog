@@ -18,13 +18,13 @@ export default function DashSidebar() {
     <Sidebar className="w-full md:w-56">
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          <Sidebar.Item active={tab === "profile"} icon={HiUser}>
+          <Sidebar.Item active={tab === "profile"} icon={HiUser} as={"div"}>
             <Link to="/dashboard?tab=profile">Profile</Link>
           </Sidebar.Item>
         </Sidebar.ItemGroup>
 
         <Sidebar.ItemGroup>
-          <Sidebar.Item icon={HiArrowSmRight}>
+          <Sidebar.Item icon={HiArrowSmRight} as={"div"}>
             <Link to="#">Signout</Link>
           </Sidebar.Item>
         </Sidebar.ItemGroup>
