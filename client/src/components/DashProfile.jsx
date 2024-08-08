@@ -20,8 +20,9 @@ import { useDispatch } from "react-redux";
 import { app } from "../firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { Link } from 'react-router-dom';
 export default function DashProfile() {
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, error, loading } = useSelector((state) => state.user);
   //console.log(currentUser);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
@@ -240,8 +241,8 @@ export default function DashProfile() {
           placeholder="**************"
           onChange={handleChange}
         />
-        <Button type="submit" gradientDuoTone="purpleToBlue" outline>
-          Update
+        <Button type="submit" gradientDuoTone="purpleToBlue" outline disabled={loading || imageFileUploading}>
+          {loading ? "Loading..." : "Update"}
         </Button>
       </form>
       <div className="flex justify-between text-red-700 mt-5">
@@ -249,7 +250,16 @@ export default function DashProfile() {
           Delete Account
         </span>
         <span className="cursor-pointer" onClick={handleSignout}>Sign Out</span>
+      
+       
       </div>
+
+        <div className="flex justify-between text-red-700 mt-5">
+        {currentUser.isAdmin && (
+          <Link to={"/create-post"}><Button type="button" gradientDuoTone="purpleToPink">Create a Post</Button></Link>
+        )}
+        </div>
+
       {updateUserFailure && (
         <Alert color="failure" className="mt-5">
           {updateUserFailure}
@@ -280,6 +290,7 @@ export default function DashProfile() {
           </Modal.Body>
         </Modal.Header>
       </Modal>
+     
     </div>
   );
 }
