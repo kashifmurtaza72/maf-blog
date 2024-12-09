@@ -23,6 +23,8 @@ export default function Dashboard() {
 
       {/* Profile */}
       { tab === 'profile' && <DashProfile />}
+
+     
     </div>
   )
 }

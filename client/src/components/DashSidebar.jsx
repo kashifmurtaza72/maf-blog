@@ -9,6 +9,7 @@ export default function DashSidebar() {
   const [tab, setTab] = useState("");
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     const URLParams = new URLSearchParams(location.search);
     const tabFromUrl = URLParams.get("tab");
@@ -43,6 +44,8 @@ export default function DashSidebar() {
             <Link to="/dashboard?tab=profile">Profile</Link>
           </Sidebar.Item>
         </Sidebar.ItemGroup>
+
+   
 
         <Sidebar.ItemGroup>
           <Sidebar.Item icon={HiArrowSmRight} as={"div"}>
